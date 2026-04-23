@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>❤️ Heart Disease Predictor</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>❤️ Heart Disease Prediction App</h1>
+      <p>
+        This app predicts the
+        <strong>probability of heart disease</strong> using three models:
+        Logistic Regression, Random Forest, and Decision Tree.
+      </p>
+
+      <form id="prediction-form">
+        <div class="form-group">
+          <label for="model">Choose Model:</label>
+          <select id="model" name="model">
+            <option value="Logistic Regression">Logistic Regression</option>
+            <option value="Random Forest">Random Forest</option>
+            <option value="Decision Tree">Decision Tree</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              min="20"
+              max="100"
+              value="50"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="sex">Sex:</label>
+            <select id="sex" name="sex">
+              <option value="0">Female</option>
+              <option value="1">Male</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cp">Chest Pain Type:</label>
+            <select id="cp" name="cp">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="trestbps">Resting Blood Pressure:</label>
+            <input
+              type="number"
+              id="trestbps"
+              name="trestbps"
+              min="80"
+              max="200"
+              value="120"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="chol">Cholesterol:</label>
+            <input
+              type="number"
+              id="chol"
+              name="chol"
+              min="100"
+              max="600"
+              value="200"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="fbs">Fasting Blood Sugar > 120 mg/dl:</label>
+            <select id="fbs" name="fbs">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="restecg">Resting ECG:</label>
+            <select id="restecg" name="restecg">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="thalach">Max Heart Rate Achieved:</label>
+            <input
+              type="number"
+              id="thalach"
+              name="thalach"
+              min="70"
+              max="210"
+              value="150"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="exang">Exercise Induced Angina:</label>
+            <select id="exang" name="exang">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="oldpeak">ST Depression:</label>
+            <input
+              type="number"
+              id="oldpeak"
+              name="oldpeak"
+              min="0.0"
+              max="6.0"
+              step="0.1"
+              value="1.0"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="slope">Slope:</label>
+            <select id="slope" name="slope">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ca">Number of Major Vessels:</label>
+            <select id="ca" name="ca">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="thal">Thal:</label>
+            <select id="thal" name="thal">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" id="predict-btn">🔍 Predict</button>
+      </form>
+
+      <div id="result" class="result hidden">
+        <h2>🧾 Prediction Result:</h2>
+        <p id="prediction-text"></p>
+        <p id="model-used"></p>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
